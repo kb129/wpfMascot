@@ -19,6 +19,8 @@ namespace Mascot
         private float totalTime;
         private float playTime;
         private float playSpeed;
+        private Point startPoint;
+
 
         public Form1()
         {
@@ -36,13 +38,13 @@ namespace Mascot
             DX.SetDrawScreen(DX.DX_SCREEN_BACK);
 
             modelHandle = DX.MV1LoadModel("Data/rin_sour/miku.pmx"); // load model
-            attachIndex = DX.MV1AttachAnim(modelHandle, 31, -1, DX.FALSE); // set animation number
-            totalTime = DX.MV1GetAttachAnimTime(modelHandle, attachIndex);
+            attachIndex = DX.MV1AttachAnim(modelHandle, 44, -1, DX.FALSE); // set animation number
+            totalTime = DX.MV1GetAttachAnimTotalTime(modelHandle, attachIndex);
             playTime = 0.0f;
-            playSpeed = 3.0f;
+            playSpeed = 0.3f;
 
             DX.SetCameraNearFar(0.1f, 1000.0f); // 奥行0.1～1000を描画範囲とする
-            DX.SetCameraPositionAndTarget_UpVecY(DX.VGet(0.0f, 10.0f, -20.0f), DX.VGet(0.0f, 10.0f, 0.0f));
+            DX.SetCameraPositionAndTarget_UpVecY(DX.VGet(0.0f, 10.0f, -20.0f), DX.VGet(0.0f, 10.0f, 20.0f));
 
         }
 
@@ -81,6 +83,24 @@ namespace Mascot
         {
             FormBorderStyle = FormBorderStyle.None; // フォームの枠非表示
             TransparencyKey = Color.FromArgb(1, 1, 1);
+        }
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
+            {
+                startPoint = new Point(e.X, e.Y);
+            }
+        }
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
+            {
+                this.Location = new Point(
+                    this.Location.X + e.X - startPoint.X,
+                    this.Location.Y + e.Y - startPoint.Y);
+            }
         }
     }
 }

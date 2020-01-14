@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,15 +17,11 @@ namespace Mascot
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            Form1 form = new Form1();
-            form.Show();
-
-            while (form.Created)
-            {
-                form.MainLoop();
+            Control control = new Control();
+            control.Show();
+            while (control.Created)
                 Application.DoEvents();
-            }
+
         }
     }
 }
