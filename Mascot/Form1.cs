@@ -38,13 +38,13 @@ namespace Mascot
             DX.SetDrawScreen(DX.DX_SCREEN_BACK);
 
             modelHandle = DX.MV1LoadModel("Data/rin_sour/miku.pmx"); // load model
-            attachIndex = DX.MV1AttachAnim(modelHandle, 44, -1, DX.FALSE); // set animation number
+            attachIndex = DX.MV1AttachAnim(modelHandle, 45, -1, DX.FALSE); // set animation number
             totalTime = DX.MV1GetAttachAnimTotalTime(modelHandle, attachIndex);
             playTime = 0.0f;
-            playSpeed = 0.3f;
+            playSpeed = 0.5f;
 
             DX.SetCameraNearFar(0.1f, 1000.0f); // 奥行0.1～1000を描画範囲とする
-            DX.SetCameraPositionAndTarget_UpVecY(DX.VGet(0.0f, 10.0f, -20.0f), DX.VGet(0.0f, 10.0f, 20.0f));
+            DX.SetCameraPositionAndTarget_UpVecY(DX.VGet(0.0f, 0.0f, -20.0f), DX.VGet(0.0f, 10.0f, 20.0f));
 
         }
 
