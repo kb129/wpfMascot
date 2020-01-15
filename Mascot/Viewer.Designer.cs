@@ -1,6 +1,6 @@
 ﻿namespace Mascot
 {
-    partial class Form1
+    partial class Viewer
     {
         /// <summary>
         /// 必要なデザイナー変数です。
@@ -30,12 +30,12 @@
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // Viewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(586, 387);
-            this.Name = "Form1";
+            this.ClientSize = new System.Drawing.Size(338, 312);
+            this.Name = "Viewer";
             this.Text = "Form1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Shown += new System.EventHandler(this.Form1_Sown);

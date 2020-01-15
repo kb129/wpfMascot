@@ -12,7 +12,7 @@ using DxLibDLL;
 
 namespace Mascot
 {
-    public partial class Form1 : Form
+    public partial class Viewer : Form
     {
         private int modelHandle;
         private int attachIndex;
@@ -22,12 +22,13 @@ namespace Mascot
         private Point startPoint;
 
 
-        public Form1()
+        public Viewer(string modelPath)
         {
             InitializeComponent();
 
             ClientSize = new Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
             Text = "DesktopMascot";
+
 
             DX.SetOutApplicationLogValidFlag(DX.FALSE);
             DX.SetUserWindow(Handle);
@@ -36,15 +37,15 @@ namespace Mascot
             DX.SetFullSceneAntiAliasingMode(4, 2);
             DX.DxLib_Init();
             DX.SetDrawScreen(DX.DX_SCREEN_BACK);
-
-            modelHandle = DX.MV1LoadModel("Data/rin_sour/miku.pmx"); // load model
-            attachIndex = DX.MV1AttachAnim(modelHandle, 45, -1, DX.FALSE); // set animation number
+            modelHandle = DX.MV1LoadModel(modelPath); // load model
+            attachIndex = DX.MV1AttachAnim(modelHandle, 2, -1, DX.FALSE); // set animation number
             totalTime = DX.MV1GetAttachAnimTotalTime(modelHandle, attachIndex);
             playTime = 0.0f;
-            playSpeed = 0.5f;
+
+            SetSpeed(0.5f);
 
             DX.SetCameraNearFar(0.1f, 1000.0f); // 奥行0.1～1000を描画範囲とする
-            DX.SetCameraPositionAndTarget_UpVecY(DX.VGet(0.0f, 0.0f, -20.0f), DX.VGet(0.0f, 10.0f, 20.0f));
+            DX.SetCameraPositionAndTarget_UpVecY(DX.VGet(0.0f, 10.0f, -20.0f), DX.VGet(0.0f, 10.0f, 20.0f));
 
         }
 
@@ -72,6 +73,11 @@ namespace Mascot
             }
 
             DX.ScreenFlip();
+        }
+
+        public void SetSpeed(float speed)
+        {
+            this.playSpeed = speed;
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)

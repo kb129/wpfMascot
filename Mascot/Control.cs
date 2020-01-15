@@ -12,44 +12,48 @@ namespace Mascot
 {
     public partial class Control : Form
     {
-        Form1 form1;
-        public Control()
+        private Viewer viewer;
+        private string modelPath;
+        private float speed;
+        public Control(string modelPath)
         {
+            this.speed = 0.5f;
+            this.modelPath = modelPath;
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void speedTrackBar_ValueChanged(object sender, EventArgs e)
         {
-            form1 = new Form1();
-            form1.Show();
-            while (form1.Created)
+            speed = ((TrackBar)sender).Value / 10.0f;
+            if (viewer.Created)
             {
-                form1.MainLoop();
-                Application.DoEvents();
+                viewer.SetSpeed(speed);
             }
         }
 
-        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        private void startButton_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            var result = openFileDialog1.ShowDialog();
-            if (result == DialogResult.OK || result == DialogResult.Yes)
+            if (viewer == null)
             {
-                textBox1.Text = openFileDialog1.FileName;
+                viewer = new Viewer(modelPath);
+                viewer.SetSpeed(speed);
+                viewer.Show();
+
+                while (viewer.Created)
+                {
+                    viewer.MainLoop();
+                    Application.DoEvents();
+                }
+            }
+            else
+            {
+                viewer.SetSpeed(speedTrackBar.Value / 10.0f);
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void stopButton_Click(object sender, EventArgs e)
         {
-            var result = openFileDialog1.ShowDialog();
-            if (result == DialogResult.OK || result == DialogResult.Yes)
-            {
-                textBox2.Text = openFileDialog1.FileName;
-            }
+            viewer.SetSpeed(0);
         }
     }
 }

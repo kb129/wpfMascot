@@ -17,7 +17,7 @@ namespace Mascot
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Control control = new Control();
+            LoadModelForm control = new LoadModelForm();
             control.Show();
             while (control.Created)
                 Application.DoEvents();
