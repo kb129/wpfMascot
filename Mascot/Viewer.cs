@@ -19,7 +19,8 @@ namespace Mascot
         private float totalTime;
         private float playTime;
         private float playSpeed;
-        private Point startPoint;
+        private Point lStartPoint;
+        private Point rStartPoint;
 
 
         public Viewer(string modelPath)
@@ -95,7 +96,11 @@ namespace Mascot
         {
             if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
             {
-                startPoint = new Point(e.X, e.Y);
+                lStartPoint = new Point(e.X, e.Y);
+            }
+            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
+            {
+                rStartPoint = new Point(e.X, e.Y);
             }
         }
 
@@ -104,8 +109,12 @@ namespace Mascot
             if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
             {
                 this.Location = new Point(
-                    this.Location.X + e.X - startPoint.X,
-                    this.Location.Y + e.Y - startPoint.Y);
+                    this.Location.X + e.X - lStartPoint.X,
+                    this.Location.Y + e.Y - lStartPoint.Y);
+            }
+            if ((e.Button & MouseButtons.Right) == MouseButtons.Left)
+            {
+                
             }
         }
     }
