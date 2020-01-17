@@ -62,6 +62,7 @@
     <Compile Include="LoadModelForm.Designer.cs">
       <DependentUpon>LoadModelForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModelInfo.cs" />
     <Compile Include="Viewer.cs">
       <SubType>Form</SubType>
     </Compile>

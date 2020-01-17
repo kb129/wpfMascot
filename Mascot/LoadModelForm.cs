@@ -13,6 +13,7 @@ namespace Mascot
     public partial class LoadModelForm : Form
     {
         Control control;
+        ModelInfo modelInfo;
         public LoadModelForm()
         {
             InitializeComponent();
@@ -31,6 +32,7 @@ namespace Mascot
             {
                 textModelPath.Text = openFileDialog1.FileName;
                 loadButton.Enabled = true;
+                modelInfo = new ModelInfo(textModelPath.Text);
             }
         }
     }
