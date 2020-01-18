@@ -16,10 +16,12 @@ namespace Mascot
         private Viewer viewer;
         private string modelPath;
         private float speed;
+        private ButtonSwitchService bss;
         public LoadModelForm()
         {
             InitializeComponent();
             this.speed = 0.5f;
+            bss = new ButtonSwitchService(startButton, stopButton);
         }
 
         private void loadButton_Click(object sender, EventArgs e)
@@ -48,13 +50,13 @@ namespace Mascot
 
         private void startButton_Click(object sender, EventArgs e)
         {
+            bss.ButtonSwitch();
             if (viewer == null)
             {
                 viewer = new Viewer(modelPath);
                 viewer.SetSpeed(speed);
                 viewer.Show();
-                startButton.Enabled = false;
-                stopButton.Enabled = true;
+
                 Height = 500;
 
                 while (viewer.Created)
@@ -72,8 +74,7 @@ namespace Mascot
         private void stopButton_Click(object sender, EventArgs e)
         {
             viewer.SetSpeed(0);
-            stopButton.Enabled = false;
-            startButton.Enabled = true;
+            bss.ButtonSwitch();
         }
 
         private void Control_FormClosed(object sender, FormClosedEventArgs e)
