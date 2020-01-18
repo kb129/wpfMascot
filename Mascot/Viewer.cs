@@ -69,6 +69,7 @@ namespace Mascot
             // Press ESC to quit
             if(DX.CheckHitKey(DX.KEY_INPUT_ESCAPE) != 0)
             {
+                DX.DxLib_End();
                 Close();
             }
 
