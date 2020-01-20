@@ -28,23 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.loadButton = new System.Windows.Forms.Button();
             this.browseButton = new System.Windows.Forms.Button();
             this.textModelPath = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.modelLabel = new System.Windows.Forms.Label();
+            this.speedTrackBar = new System.Windows.Forms.TrackBar();
+            this.label1 = new System.Windows.Forms.Label();
+            this.startButton = new System.Windows.Forms.Button();
+            this.stopButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.speedTrackBar)).BeginInit();
             this.SuspendLayout();
-            // 
-            // loadButton
-            // 
-            this.loadButton.Enabled = false;
-            this.loadButton.Location = new System.Drawing.Point(144, 75);
-            this.loadButton.Name = "loadButton";
-            this.loadButton.Size = new System.Drawing.Size(75, 23);
-            this.loadButton.TabIndex = 0;
-            this.loadButton.Text = "Load";
-            this.loadButton.UseVisualStyleBackColor = true;
-            this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
             // 
             // browseButton
             // 
@@ -52,7 +45,7 @@
             this.browseButton.Name = "browseButton";
             this.browseButton.Size = new System.Drawing.Size(75, 23);
             this.browseButton.TabIndex = 1;
-            this.browseButton.Text = "browse";
+            this.browseButton.Text = "Browse";
             this.browseButton.UseVisualStyleBackColor = true;
             this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
             // 
@@ -76,28 +69,80 @@
             this.modelLabel.TabIndex = 3;
             this.modelLabel.Text = "Model";
             // 
+            // speedTrackBar
+            // 
+            this.speedTrackBar.Location = new System.Drawing.Point(46, 131);
+            this.speedTrackBar.Maximum = 100;
+            this.speedTrackBar.Name = "speedTrackBar";
+            this.speedTrackBar.Size = new System.Drawing.Size(247, 45);
+            this.speedTrackBar.TabIndex = 1;
+            this.speedTrackBar.Value = 5;
+            this.speedTrackBar.ValueChanged += new System.EventHandler(this.speedTrackBar_ValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 131);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 12);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "speed";
+            // 
+            // startButton
+            // 
+            this.startButton.Location = new System.Drawing.Point(46, 65);
+            this.startButton.Name = "startButton";
+            this.startButton.Size = new System.Drawing.Size(75, 23);
+            this.startButton.TabIndex = 2;
+            this.startButton.Text = "Start";
+            this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Visible = false;
+            this.startButton.Click += new System.EventHandler(this.startButton_Click);
+            // 
+            // stopButton
+            // 
+            this.stopButton.Enabled = false;
+            this.stopButton.Location = new System.Drawing.Point(218, 65);
+            this.stopButton.Name = "stopButton";
+            this.stopButton.Size = new System.Drawing.Size(75, 23);
+            this.stopButton.TabIndex = 3;
+            this.stopButton.Text = "Stop";
+            this.stopButton.UseVisualStyleBackColor = true;
+            this.stopButton.Visible = false;
+            this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
+            // 
             // LoadModelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(364, 110);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(364, 261);
+            this.Controls.Add(this.stopButton);
             this.Controls.Add(this.modelLabel);
+            this.Controls.Add(this.startButton);
             this.Controls.Add(this.textModelPath);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.speedTrackBar);
             this.Controls.Add(this.browseButton);
-            this.Controls.Add(this.loadButton);
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "LoadModelForm";
-            this.Text = "Control";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.Text = "Mascot";
+            ((System.ComponentModel.ISupportInitialize)(this.speedTrackBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button loadButton;
         private System.Windows.Forms.Button browseButton;
         private System.Windows.Forms.TextBox textModelPath;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label modelLabel;
+        private System.Windows.Forms.TrackBar speedTrackBar;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button startButton;
+        private System.Windows.Forms.Button stopButton;
     }
 }
